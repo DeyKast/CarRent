@@ -1,0 +1,78 @@
+.homeContainer {
+  align-items: center;
+  text-align: center;
+
+  margin: 15px;
+  padding: 20px;
+
+  background-image: linear-gradient(to bottom, #8383839f, #0505056b),
+    url('./main-page-car.jpg');
+  background-size: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.homeTitle {
+  font-size: 30px;
+
+  letter-spacing: 0.15em;
+}
+
+.homeText {
+  color: #ffffff;
+  font-size: 20px;
+  width: auto;
+
+  letter-spacing: 0.15em;
+}
+
+.homeBtn {
+  display: inline-flex;
+  padding: 12px 50px;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  border-radius: 12px;
+  background: #3470ff;
+
+  color: white;
+  font-family: inherit;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+
+  transition: background 250ms linear;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    background: #0b44cd;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .homeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+
+    text-align: end;
+
+    margin: 100px;
+    padding: 20px;
+
+    gap: 25px;
+  }
+
+  .homeText {
+    font-size: 25px;
+    width: 400px;
+    margin: 0;
+  }
+
+  .homeTitle {
+    font-size: 45px;
+    margin: 0;
+  }
+}

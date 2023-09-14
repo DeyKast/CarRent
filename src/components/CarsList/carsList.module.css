@@ -1,0 +1,157 @@
+.carsListContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+.carsList {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  padding: 0;
+  max-width: 1184px;
+
+  gap: 29px;
+}
+.carsListItem {
+  display: flex;
+  width: 274px;
+  height: 426px;
+  flex-direction: column;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  position: relative;
+}
+
+.imgWrapper {
+  width: 401px;
+  height: 268px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carsListItemImg {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+}
+.carsListItemBtn {
+  display: flex;
+  width: 274px;
+  height: 44px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+
+  border: none;
+  border-radius: 12px;
+  background: #3470ff;
+
+  color: white;
+  font-family: inherit;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+
+  margin-top: 28px;
+  transition: background 250ms linear;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    background: #0b44cd;
+  }
+}
+.carTitleWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 24px;
+
+  margin-top: 14px;
+}
+
+.carTextWrapper {
+  width: 100%;
+
+  padding: 0;
+
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  margin-top: 8px;
+}
+.carText {
+  margin: 0;
+  height: 40px;
+
+  white-space: wrap;
+
+  color: rgba(18, 20, 23, 0.5);
+  font-family: Manrope;
+  font-size: 12px;
+  line-height: 1.5;
+
+  text-overflow: clip;
+  overflow: hidden;
+}
+
+.carSubtext {
+  text-overflow: clip;
+  overflow: hidden;
+}
+
+.carSubtext:not(:last-child)::after {
+  content: '';
+  width: 0px;
+  height: 16px;
+  stroke-width: 1px;
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  display: inline-block;
+  margin-left: 6px;
+  margin-right: 6px;
+  vertical-align: middle;
+  content: '\00a0';
+}
+
+.iconHeart {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  width: 18px;
+  height: 18px;
+
+  &.iconHeart:hover {
+    cursor: pointer;
+    stroke: black;
+    fill: blue;
+  }
+}
+
+
+
+.carModel {
+  color: #0b44cd;
+}

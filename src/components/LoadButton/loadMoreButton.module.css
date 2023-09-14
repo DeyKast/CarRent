@@ -1,0 +1,19 @@
+.loadMoreBtn {
+  border: none;
+  background-color: transparent;
+
+  color: #3470ff;
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  text-decoration-line: underline;
+
+  transition: color 250ms linear;
+
+  &:hover {
+    cursor: pointer;
+    color: #0b44cd;
+  }
+}
