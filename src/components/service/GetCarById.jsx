@@ -9,9 +9,9 @@ export const GetCarById = async id => {
     });
 
     if (response.status === 200) {
-      console.log(response.data); // This will contain the data from the API
+      console.log(response.data);
+      return response.data[0];
     } else {
-      // Handle other response statuses as needed
     }
   } catch (error) {
     console.error('Error:', error);

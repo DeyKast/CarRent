@@ -13,7 +13,6 @@ const Catalog = () => {
   const [page, setPage] = useState(1);
   const [showMoreButton, setShowMoreButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
   const [carsData, setCarsData] = useState([]);
   const [isFirstRender, setIsFirstRender] = useState(true);
 

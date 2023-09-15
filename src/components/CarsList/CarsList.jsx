@@ -1,20 +1,45 @@
 import { PropTypes } from 'prop-types';
+import { useState } from 'react';
 
 import { GetCarById } from 'components/service/GetCarById';
+import Loader from 'components/Loader/Loader';
 
 import css from './carsList.module.css';
+import ModalWindow from 'components/ModalWindow/ModalWindow';
 
 import iconHeart from '../../photos/heart-icon.svg';
 
 const CarsList = ({ data }) => {
   const DEFAULT_IMG = 'https://openclipart.org/image/400px/321286';
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   if (!data || data.length === 0) {
     return null;
   }
 
-  const handleModalOpen = id => {
-    GetCarById(id);
+  const handleModalToggle = async id => {
+    setIsLoading(true);
+
+    if (!isModalOpen) {
+      try {
+        const response = await GetCarById(id);
+        if (response) {
+          setModalData(response);
+        } else {
+          console.error('ERROR ! resp => ', response);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    setIsModalOpen(!isModalOpen);
+    setIsLoading(false);
   };
 
   return (
@@ -65,7 +90,7 @@ const CarsList = ({ data }) => {
 
                 <button
                   className={css.carsListItemBtn}
-                  onClick={() => handleModalOpen(id)}
+                  onClick={() => handleModalToggle(id)}
                 >
                   Learn more
                 </button>
@@ -75,6 +100,10 @@ const CarsList = ({ data }) => {
           }
         )}
       </ul>
+      {isModalOpen && (
+        <ModalWindow data={modalData} handleModalToggle={handleModalToggle} />
+      )}
+      {isLoading && <Loader />}
     </div>
   );
 };
