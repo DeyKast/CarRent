@@ -10,7 +10,7 @@ import ModalWindow from 'components/ModalWindow/ModalWindow';
 import iconHeart from '../../photos/heart-icon.svg';
 
 const CarsList = ({ data }) => {
-  const DEFAULT_IMG = 'https://openclipart.org/image/400px/321286';
+  const DEFAULT_IMG = 'https://openclipart.org/image/800px/321286';
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
