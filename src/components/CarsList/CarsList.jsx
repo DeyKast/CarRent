@@ -1,13 +1,16 @@
 import { PropTypes } from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { GetCarById } from 'components/service/GetCarById';
+import { ToggleLike } from 'components/service/ToggleLike';
+import { GetLikedList } from 'components/service/GetLikedCars';
 import Loader from 'components/Loader/Loader';
 
 import css from './carsList.module.css';
 import ModalWindow from 'components/ModalWindow/ModalWindow';
 
 import iconHeart from '../../photos/heart-icon.svg';
+import likedIcon from '../../photos/liked-icon.svg';
 
 const CarsList = ({ data }) => {
   const DEFAULT_IMG = 'https://openclipart.org/image/800px/321286';
@@ -15,6 +18,12 @@ const CarsList = ({ data }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [likedList, setLikedList] = useState([]);
+
+  useEffect(() => {
+    const savedLikedList = GetLikedList();
+    setLikedList(savedLikedList);
+  }, []);
 
   if (!data || data.length === 0) {
     return null;
@@ -42,6 +51,14 @@ const CarsList = ({ data }) => {
     setIsLoading(false);
   };
 
+  const setLike = id => {
+    ToggleLike(id);
+    const updatedLikedList = GetLikedList();
+    setLikedList(updatedLikedList);
+
+    console.log(updatedLikedList);
+  };
+
   return (
     <div className={css.carsListContainer}>
       <ul className={css.carsList}>
@@ -60,6 +77,8 @@ const CarsList = ({ data }) => {
           }) => {
             const imgSrc = img ? img : DEFAULT_IMG;
             const addressParts = address.split(',');
+
+            const isLiked = likedList.includes(id);
 
             return (
               <li key={id} className={css.carsListItem}>
@@ -94,7 +113,12 @@ const CarsList = ({ data }) => {
                 >
                   Learn more
                 </button>
-                <img src={iconHeart} alt="heart" className={css.iconHeart} />
+                <img
+                  src={isLiked ? likedIcon : iconHeart}
+                  alt="heart"
+                  className={css.iconHeart}
+                  onClick={() => setLike(id)}
+                />
               </li>
             );
           }
