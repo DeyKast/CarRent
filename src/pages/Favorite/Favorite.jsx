@@ -10,6 +10,11 @@ const Favorite = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
 
+  const handleCarUnLiked = carId => {
+    const updatedLikedData = likedData.filter(car => car.id !== carId);
+    setLikedData(updatedLikedData);
+  };
+
   useEffect(() => {
     if (isFirstRender) {
       setIsFirstRender(false);
@@ -35,7 +40,7 @@ const Favorite = () => {
       <div className={css.favoriteContainer}>
         <p className={css.favoriteTitle}>FAVORITE</p>
         {likedData.length > 0 ? (
-          <CarsList data={likedData} />
+          <CarsList data={likedData} onCarUnLiked={handleCarUnLiked} />
         ) : (
           <p>No liked cars</p>
         )}

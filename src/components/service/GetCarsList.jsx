@@ -32,8 +32,7 @@ export const GetCarsList = async (page, setShowMoreButton) => {
       throw new Error('Помилка запиту');
     }
   } catch (error) {
-    // Обробка помилки
     console.error('Помилка:', error);
-    throw error; // Передача помилки наверх для подальшої обробки
+    throw error;
   }
 };

@@ -11,10 +11,9 @@ import ModalWindow from 'components/ModalWindow/ModalWindow';
 
 import iconHeart from '../../photos/heart-icon.svg';
 import likedIcon from '../../photos/liked-icon.svg';
+import DEFAULT_IMG from '../../photos/unknown-car.jpg';
 
-const CarsList = ({ data }) => {
-  const DEFAULT_IMG = 'https://openclipart.org/image/800px/321286';
-
+const CarsList = ({ data, onCarUnLiked }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -52,6 +51,10 @@ const CarsList = ({ data }) => {
   };
 
   const setLike = id => {
+    if (onCarUnLiked) {
+      onCarUnLiked(id);
+    }
+
     ToggleLike(id);
     const updatedLikedList = GetLikedList();
     setLikedList(updatedLikedList);

@@ -2,7 +2,7 @@ import css from './searchForm.module.css';
 
 export const SearchForm = () => {
   const selectedValue = event => {
-    // event.preventDefault();
+    event.preventDefault();
     console.log(event.value);
   };
 

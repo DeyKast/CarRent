@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom';
 
 import css from './modalWindow.module.css';
 import closeIcon from '../../photos/close-icon.svg';
+import DEFAULT_IMG from '../../photos/unknown-car.jpg';
 
 const ModalWindow = ({ data, handleModalToggle }) => {
-  const DEFAULT_IMG = 'https://openclipart.org/image/800px/321286';
-
   const {
     id,
     make,
